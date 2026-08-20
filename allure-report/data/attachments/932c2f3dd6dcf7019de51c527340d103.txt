@@ -1,0 +1,7 @@
+{
+  "nomComplet": "Rafael Okuneva IV",
+  "email": "Asha.Mante@hotmail.com",
+  "password": "s63nztgZoxFio0d",
+  "telephone": "565-351-3884",
+  "fcm_token": "fcm_589645"
+}

@@ -1,0 +1,5 @@
+{
+  "even_id": 629,
+  "titre": "Chief Tactics Associate",
+  "contenu": "Global"
+}

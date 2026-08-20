@@ -1,0 +1,10 @@
+{
+  "page": 1,
+  "categoryId": -1,
+  "tri": "date",
+  "prix": "tous",
+  "quand": "tous",
+  "acces": [
+    "parking"
+  ]
+}

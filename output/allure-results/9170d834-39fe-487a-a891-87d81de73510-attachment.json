@@ -1,0 +1,10 @@
+{
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ByZXByb2QudGhydW5kcnouZnIvYmFja2VuZHB1YmxpYy9wdWJsaWMvYXBpL3YxL3JlZ2lzdGVyL2NsaWVudCIsImlhdCI6MTc4NzIxOTQzMCwiZXhwIjoxNzg5ODExNDMwLCJuYmYiOjE3ODcyMTk0MzAsImp0aSI6InNReGsybkwzaFdBbXp3NEEiLCJzdWIiOiI5NTUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.PHLm1nEIsBNOLO2VDsHIKfNNocyerEaHe8z4lby0YQ4",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "ab10ae1b-f1d8-4b9c-93cd-404a3e9eaae4",
+    "Host": "preprod.thrundrz.fr",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}
