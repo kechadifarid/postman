@@ -9,7 +9,6 @@ pipeline {
                 docker {
                     image 'postman/newman:latest'
                     args '-u root --entrypoint='
-                    reuseNode true   // <-- la clé : reste sur le même workspace que agent any
                 }
             }
 
