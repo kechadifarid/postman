@@ -34,7 +34,7 @@ pipeline {
                 stage('run avec new man') {
                     steps {
                         sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
-                        sh 'chmod -R a+rwX allure-results'
+                        //sh 'chmod -R a+rwX allure-results'
                     }
                 }
             }
