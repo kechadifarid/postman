@@ -21,7 +21,7 @@ pipeline {
         stage('install allure ')
         {
             steps{
-            sh 'npm install --save-dev newman-reporter-allure'
+            sh 'npm ci'
             }
 
         }
