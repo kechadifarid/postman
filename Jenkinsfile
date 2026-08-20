@@ -11,11 +11,11 @@ pipeline {
                     args '-u root --entrypoint='
                 }
             }
-            
+
             stages{
                 stage('install allure'){
                     steps{
-                        sh 'npm install --save-dev newman-reporter-allure'
+                        sh 'npm install -g newman-reporter-allure'
                     }
                 }
 
