@@ -9,6 +9,7 @@ pipeline {
                 docker {
                     image 'postman/newman:latest'
                     args '-u root --entrypoint='
+                    reuseNode true   
                 }
             }
 
