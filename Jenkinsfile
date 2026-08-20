@@ -7,6 +7,11 @@ pipeline {
     }
     
     stages {
+        stage('install allure ')
+        {
+            sh 'npm install --save-dev newman-reporter-allure'
+
+        }
             stage('lancer test avec newman') {
             steps {
                 sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir output/allure-results'
