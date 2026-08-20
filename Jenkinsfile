@@ -17,6 +17,7 @@ pipeline {
             stage('lancer test avec newman') {
             steps {
                 sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir output/allure-results'
+                stash name: 'allure-results', includes: 'allure-results/*'
             }
         }
         
@@ -25,14 +26,14 @@ pipeline {
     post{
         always{
             script{
-                if(params.ALLURE){
+                
                     unstash 'allure-results'
                     archiveArtifacts 'allure-results/*'
                     allure includeProperties: false,
                            jdk: '',
                            results: [[path: 'allure-results/']]
                 }
-            }
+            
         }
     }
 }
