@@ -14,10 +14,11 @@ pipeline {
 
         }
             stage('lancer test avec newman') {
-            steps {
-                sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir allure-results'
-                stash name: 'allure-results', includes: 'allure-results/*'
-            }
+                     steps {
+                         sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
+                         sh 'chmod -R a+rwX allure-results'   // <-- fix: make files writable by non-root Jenkins user
+                         stash name: 'allure-results', includes: 'allure-results/*'
+                        }
         }
         
     }
