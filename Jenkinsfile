@@ -18,13 +18,16 @@ pipeline {
                         '''
                     }
                 }
-        stage('install allure ')
-        {
-            steps{
-            sh 'npm ci'
-            }
+        stage('install allure') {
+    steps {
+        sh '''
+            npm install -g newman-reporter-allure
 
-        }
+            echo "Reporter Allure installé :"
+            npm list -g newman-reporter-allure
+        '''
+    }
+}
             stage('lancer test avec newman') {
             steps {
                 sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir allure-results'
