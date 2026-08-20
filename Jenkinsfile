@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('install allure ')
         {
+            steps{
             sh 'npm install --save-dev newman-reporter-allure'
+            }
 
         }
             stage('lancer test avec newman') {
