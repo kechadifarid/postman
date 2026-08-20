@@ -1,13 +1,11 @@
 pipeline {
-    agent any
-   
-    stages {
             agent {
         docker { 
                 image 'postman/newman:latest' 
                 args '-u root --entrypoint='
             }
-    }
+    }   
+    stages {
         stage('install allure ')
         {
             steps{
