@@ -1,27 +1,27 @@
 pipeline {
     agent any
 
-      stages{
+    stages {
 
-        stage('global stage'){
-            
-            agent{
-                docker{
+        stage('global stage') {
+
+            agent {
+                docker {
                     image 'postman/newman:latest'
                     args '-u root --entrypoint='
+                    reuseNode true   // <-- la clé : reste sur le même workspace que agent any
                 }
             }
 
-            stages{
-                stage('install allure'){
-                    steps{
+            stages {
+                stage('install allure') {
+                    steps {
                         sh 'npm install -g newman-reporter-allure'
                     }
                 }
 
-                stage('clean allure results'){
-                    
-                    steps{
+                stage('clean allure results') {
+                    steps {
                         sh '''
                             echo "Suppression du cache Allure..."
                             rm -rf allure-results
@@ -30,19 +30,16 @@ pipeline {
                         '''
                     }
                 }
-        
-                stage('run avec new man'){
+
+                stage('run avec new man') {
                     steps {
-                    
                         sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
-                    
-                
-                             }
+                        sh 'chmod -R a+rwX allure-results'
+                    }
                 }
             }
         }
     }
-
 
     post {
         always {
