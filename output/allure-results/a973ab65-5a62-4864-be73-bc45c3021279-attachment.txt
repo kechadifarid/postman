@@ -1,7 +1,0 @@
-{
-  "nomComplet": "Robin Fahey",
-  "email": "Darwin_Hahn@gmail.com",
-  "password": "aB0Ja8cRN2a6oN3",
-  "telephone": "972-734-8975",
-  "fcm_token": "fcm_589645"
-}

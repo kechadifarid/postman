@@ -1,4 +1,0 @@
-{
-  "contenu": "Possimus magnam repellendus corrupti dolor omnis quos mollitia. Vel enim aperiam expedita eaque qui aliquid et id amet. Et enim distinctio beatae unde dolores voluptate.",
-  "parent_id": null
-}

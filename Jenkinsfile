@@ -7,6 +7,17 @@ pipeline {
     }
     
     stages {
+        stage('clean allure results'){
+                    
+                    steps{
+                        sh '''
+                            echo "Suppression du cache Allure..."
+                            rm -rf allure-results
+                            mkdir -p allure-results
+                            echo "Dossier allure-results nettoyé avec succès"
+                        '''
+                    }
+                }
         stage('install allure ')
         {
             steps{
