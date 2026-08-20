@@ -17,23 +17,17 @@ pipeline {
                      steps {
                          sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
                          sh 'chmod -R a+rwX allure-results'   // <-- fix: make files writable by non-root Jenkins user
-                         stash name: 'allure-results', includes: 'allure-results/*'
                         }
         }
         
     }
 
-    post{
-        always{
-            script{
-                
-                    unstash 'allure-results'
-                    archiveArtifacts 'allure-results/*'
-                    allure includeProperties: false,
-                           jdk: '',
-                           results: [[path: 'allure-results/']]
-                }
-            
+    post {
+        always {
+            archiveArtifacts artifacts: 'allure-results/*', allowEmptyArchive: true
+            allure includeProperties: false,
+                   jdk: '',
+                   results: [[path: 'allure-results/']]
         }
     }
 }
