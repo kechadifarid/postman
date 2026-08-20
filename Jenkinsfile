@@ -4,6 +4,7 @@ pipeline {
                 image 'postman/newman:latest' 
                 args '-u root --entrypoint='
             }
+    }
     
     stages {
             stage('lancer test avec newman') {
@@ -13,7 +14,7 @@ pipeline {
         }
         
     }
-}
+
     post{
         always{
             script{
