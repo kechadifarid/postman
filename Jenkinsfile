@@ -10,6 +10,7 @@ pipeline {
         stage('install deps') {
             steps {
                 sh 'npm install --save-dev newman-reporter-allure allure-commandline'
+                sh 'apk add --no-cache openjdk11-jre'   // <-- ajoute Java pour allure-commandline
             }
         }
         stage('lancer test avec newman') {
