@@ -16,7 +16,7 @@ pipeline {
         }
             stage('lancer test avec newman') {
             steps {
-                sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir output/allure-results'
+                sh 'newman run collection.json -e env.json   --reporters cli,allure   --reporter-allure-resultsDir allure-results'
                 stash name: 'allure-results', includes: 'allure-results/*'
             }
         }
