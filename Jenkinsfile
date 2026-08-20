@@ -1,34 +1,34 @@
 pipeline {
-    agent {
-        docker {
-            image 'postman/newman:latest'
-            args '-u root --entrypoint='
-        }
-    }
+    agent any
 
     stages {
-        stage('install deps') {
+        stage('install allure') {
             steps {
-                sh 'npm install --save-dev newman-reporter-allure allure-commandline'
-                sh 'apk add --no-cache openjdk11-jre'   // <-- ajoute Java pour allure-commandline
+                script {
+                    docker.image('postman/newman:latest').inside('-u root --entrypoint=') {
+                        sh 'npm install --save-dev newman-reporter-allure'
+                    }
+                }
             }
         }
         stage('lancer test avec newman') {
             steps {
-                sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
-            }
-        }
-        stage('generer rapport allure') {
-            steps {
-                sh 'npx allure generate allure-results -c -o allure-report'
-                sh 'chmod -R a+rwX allure-results allure-report'
+                script {
+                    docker.image('postman/newman:latest').inside('-u root --entrypoint=') {
+                        sh 'newman run collection.json -e env.json --reporters cli,allure --reporter-allure-resultsDir allure-results'
+                        sh 'chmod -R a+rwX allure-results'
+                    }
+                }
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'allure-results/**, allure-report/**', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'allure-results/*', allowEmptyArchive: true
+            allure includeProperties: false,
+                   jdk: '',
+                   results: [[path: 'allure-results/']]
         }
     }
 }
